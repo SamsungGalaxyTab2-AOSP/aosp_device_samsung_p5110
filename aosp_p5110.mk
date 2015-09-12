@@ -1,5 +1,5 @@
 #
-# Copyright (C) 2012 The CyanogenMod Project
+# Copyright 2013 The Android Open-Source Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -14,13 +14,16 @@
 # limitations under the License.
 #
 
-# Inherit from those products. Most specific first.
-$(call inherit-product, $(SRC_TARGET_DIR)/product/full_base.mk)
-$(call inherit-product, device/samsung/p5110/device.mk)
+# Inherit device configuration
+$(call inherit-product, device/samsung/p5110/full_p5110.mk)
 
-# Discard inherited values and use our own instead.
-PRODUCT_NAME := full_p5110
-PRODUCT_DEVICE := p5110
-PRODUCT_BRAND := Android
-PRODUCT_MODEL := AOSP on GT-P5110
-PRODUCT_MANUFACTURER := Samsung
+# Device identifier. This must come after all inclusions
+PRODUCT_NAME := aosp_p5110
+
+# Set Product Name etc.
+PRODUCT_BUILD_PROP_OVERRIDES += \
+    PRODUCT_NAME=espresso10wifixx \
+    TARGET_DEVICE=espresso10wifi
+
+PRODUCT_PACKAGES += \
+    Launcher3
