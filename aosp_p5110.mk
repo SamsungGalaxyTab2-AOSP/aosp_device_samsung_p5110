@@ -14,6 +14,9 @@
 # limitations under the License.
 #
 
+# Inherit some common extras
+$(call inherit-product, vendor/aosp/config/common.mk)
+
 # Use 44.1 kHz UI sounds
 $(call inherit-product-if-exists, frameworks/base/data/sounds/AudioPackage13.mk)
 
